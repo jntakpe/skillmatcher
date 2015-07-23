@@ -7,6 +7,8 @@
     <groupId>com.github.jntakpe</groupId>
     <artifactId>skillmatcher</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>skillmatcher</name>
+    <description>Standardisation des évaluations techniques des candidats</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
