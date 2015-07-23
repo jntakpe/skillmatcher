@@ -9,7 +9,5 @@ public class UrlConstants {
 
     public static final String BASE = "/api";
 
-    public static final String ACCOUNT = BASE + "/account";
-
-    public static final String API = BASE + "/api";
+    public static final String CANDIDATS = BASE + "/candidats";
 }
