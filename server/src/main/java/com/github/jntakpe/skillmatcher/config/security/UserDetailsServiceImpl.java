@@ -44,7 +44,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public SpringSecurityUser loadUserByUsername(String email) {
-        LOGGER.debug("Authenticating user with mail adress : {}", email);
+        LOGGER.debug("Authentification de l'utilisateur avec l'addresse mail {}", email);
         Utilisateur user = utilisateurService.findByEmailWithAuthorities(email);
         return mapUserDetails(user);
     }

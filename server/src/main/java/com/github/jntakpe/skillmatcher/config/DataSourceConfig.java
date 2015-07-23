@@ -4,8 +4,6 @@ import com.codahale.metrics.MetricRegistry;
 import com.github.jntakpe.skillmatcher.config.properties.DatasourceProperties;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
@@ -24,8 +22,6 @@ import javax.sql.DataSource;
 @EnableJpaRepositories("com.github.jntakpe.skillmatcher.repository")
 public class DataSourceConfig {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataSourceConfig.class);
-
     @Autowired
     private DatasourceProperties datasourceProperties;
 
@@ -34,7 +30,6 @@ public class DataSourceConfig {
 
     @Bean(destroyMethod = "shutdown")
     public DataSource dataSource() {
-        LOGGER.debug("Configuring datasource");
         HikariConfig config = new HikariConfig();
         config.addDataSourceProperty("url", datasourceProperties.getUrl());
         config.setDataSourceClassName(datasourceProperties.getDataSourceClassName());

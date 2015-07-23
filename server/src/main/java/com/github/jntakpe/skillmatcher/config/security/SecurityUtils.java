@@ -1,8 +1,6 @@
 package com.github.jntakpe.skillmatcher.config.security;
 
 import com.github.jntakpe.skillmatcher.config.ConfigConstants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,8 +14,6 @@ import java.util.Optional;
  * @author jntakpe
  */
 public final class SecurityUtils {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(SecurityUtils.class);
 
     private SecurityUtils() {
     }
