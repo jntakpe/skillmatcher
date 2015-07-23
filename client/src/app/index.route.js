@@ -1,21 +1,10 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular
-    .module('skillmatcher')
-    .config(routeConfig);
+    angular.module('skillmatcher').config(routeConfig);
 
-  /** @ngInject */
-  function routeConfig($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      });
-
-    $urlRouterProvider.otherwise('/');
-  }
+    function routeConfig($urlRouterProvider) {
+        $urlRouterProvider.otherwise('/404');
+    }
 
 })();

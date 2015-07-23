@@ -2,7 +2,7 @@ app:
   name: ${project.name}
   description: ${project.description}
   version: ${project.version}
-  termsOfServiceUrl: http://www.github.com/jntakpe/mockrest
+  termsOfServiceUrl: http://www.github.com/jntakpe/skillmatcher
   contact: j.ntakpe@gmail.com
   license: MIT
   licenseUrl: http://opensource.org/licenses/MIT

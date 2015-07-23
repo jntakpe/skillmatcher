@@ -1,0 +1,33 @@
+<div class="md-toolbar-tools header-toolbar-tools">
+    <md-button class="md-icon-button" aria-label="Toggle Menu" ng-click="header.openMenu()" hide-gt-sm>
+        <md-icon class="material-icons">menu</md-icon>
+    </md-button>
+    <div class="fill-height" layout="row" flex>
+        <h2 class="md-toolbar-item md-breadcrumb md-headline" flex>
+            <span ng-repeat="parent in header.breadcrumb.parents">
+                <span hide-sm hide-md>{{parent.title}}</span>
+                <span class="header-separator-icon" hide-sm hide-md>
+                    <span class="md-visually-hidden">-</span>
+                    <md-icon class="material-icons" hide-sm hide-md>chevron_right</md-icon>
+              </span>
+            </span>
+            <span class="md-breadcrumb-page">{{header.breadcrumb.title}}</span>
+        </h2>
+
+        <div class="md-toolbar-item" ng-if="header.username">
+            <span>{{header.username}}</span>
+        </div>
+        <div class="md-toolbar-item" ng-if="header.username">
+            <a ui-sref="login({logout: 'true'})" class="md-icon-button md-button md-warn" aria-label="Sign out">
+                <md-icon class="material-icons">exit_to_app</md-icon>
+                <md-tooltip>Sign out</md-tooltip>
+            </a>
+        </div>
+        <div class="md-toolbar-item" ng-if="!header.username">
+            <a ui-sref="login" class="md-button md-raised md-primary">
+                <md-icon class="material-icons">launch</md-icon>
+                Sign in
+            </a>
+        </div>
+    </div>
+</div>
