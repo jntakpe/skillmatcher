@@ -12,6 +12,8 @@ management:
     enabled: false
 spring:
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL82Dialect
+    database: postgresql
     openInView: false
     show-sql: true
     generate-ddl: true
@@ -31,9 +33,6 @@ authentication:
 ---
 spring:
   profiles: dev
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQL82Dialect
-    database: postgresql
 datasource:
   url: jdbc:postgresql://localhost:5432/skillmatcher
   username: postgres

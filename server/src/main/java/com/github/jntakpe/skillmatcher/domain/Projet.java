@@ -19,7 +19,8 @@ public class Projet extends GenericDomain {
     private Set<Candidat> candidats = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "projets_competences", joinColumns = {@JoinColumn(name = "projet_id", referencedColumnName = "id")},
+    @JoinTable(name = "projets_competences",
+            joinColumns = {@JoinColumn(name = "projet_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "competence_id", referencedColumnName = "id")})
     private Set<Competence> competences = new HashSet<>();
 
