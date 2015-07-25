@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-layout').factory('headerService', headerService);
+    angular.module('skillmatcher.layout').factory('headerService', headerService);
 
     function headerService($state) {
 

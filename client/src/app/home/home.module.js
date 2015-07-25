@@ -1,8 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-home', ['skillmatcher-core'])
-        .config(homeState);
+    angular.module('skillmatcher.home', ['skillmatcher.core']).config(homeState);
 
     function homeState($stateProvider) {
         $stateProvider.state('main.home', {

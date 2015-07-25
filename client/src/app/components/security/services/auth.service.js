@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-security').factory('authService', authService);
+    angular.module('skillmatcher.security').factory('authService', authService);
 
     function authService($rootScope, $state, $q, principalService, oauth2Service) {
 

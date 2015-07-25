@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-layout').factory('sidenavService', sidenavService);
+    angular.module('skillmatcher.layout').factory('sidenavService', sidenavService);
 
     function sidenavService() {
 

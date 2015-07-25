@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-error').controller('NotFoundCtrl', NotFoundCtrl);
+    angular.module('skillmatcher.error').controller('NotFoundCtrl', NotFoundCtrl);
 
     function NotFoundCtrl($state) {
         var vm = this;

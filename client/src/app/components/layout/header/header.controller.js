@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-layout').controller('HeaderCtrl', HeaderCtrl);
+    angular.module('skillmatcher.layout').controller('HeaderCtrl', HeaderCtrl);
 
 
     function HeaderCtrl($scope, $timeout, $mdSidenav, headerService, authorize) {

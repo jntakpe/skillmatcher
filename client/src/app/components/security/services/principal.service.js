@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-security').factory('principalService', principalService);
+    angular.module('skillmatcher.security').factory('principalService', principalService);
 
     var identity, authenticated;
 

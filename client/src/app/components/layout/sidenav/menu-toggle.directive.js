@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-layout').directive('menuToggle', menuToggle);
+    angular.module('skillmatcher.layout').directive('menuToggle', menuToggle);
 
     function menuToggle($timeout) {
         return {

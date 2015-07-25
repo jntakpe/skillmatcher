@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('skillmatcher-security', ['skillmatcher-core', 'LocalStorageModule'])
+        .module('skillmatcher.security', ['skillmatcher.core', 'LocalStorageModule'])
         .config(configState)
         .config(configInterceptors)
         .config(configLocalStorage)

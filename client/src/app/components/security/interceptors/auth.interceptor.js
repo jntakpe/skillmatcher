@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-security').factory('authInterceptor', authInterceptor);
+    angular.module('skillmatcher.security').factory('authInterceptor', authInterceptor);
 
     function authInterceptor(localStorageService) {
         return {

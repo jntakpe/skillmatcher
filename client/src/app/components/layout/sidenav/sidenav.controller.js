@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-layout').controller('SidenavCtrl', SidenavCtrl);
+    angular.module('skillmatcher.layout').controller('SidenavCtrl', SidenavCtrl);
 
     function SidenavCtrl(sidenavService, menuContent) {
         var vm = this;

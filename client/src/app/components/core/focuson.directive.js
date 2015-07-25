@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-core').directive('focusOn', function () {
+    angular.module('skillmatcher.core').directive('focusOn', function () {
         return {
             restrict: 'A',
             link: link

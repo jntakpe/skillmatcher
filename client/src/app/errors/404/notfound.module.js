@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-error').config(notFoundState);
+    angular.module('skillmatcher.error').config(notFoundState);
 
     function notFoundState($stateProvider) {
         $stateProvider.state('notfound', {

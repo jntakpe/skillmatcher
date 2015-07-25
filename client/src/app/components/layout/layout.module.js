@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('skillmatcher-layout', ['skillmatcher-core', 'skillmatcher-security'])
+        .module('skillmatcher.layout', ['skillmatcher.core', 'skillmatcher.security'])
         .config(configLayout)
         .config(configMain);
 

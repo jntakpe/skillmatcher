@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-security').factory('authExpiredInterceptor', authExpiredInterceptor);
+    angular.module('skillmatcher.security').factory('authExpiredInterceptor', authExpiredInterceptor);
 
 
     function authExpiredInterceptor($q, $injector, localStorageService) {

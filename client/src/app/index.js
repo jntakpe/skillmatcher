@@ -2,10 +2,11 @@
     'use strict';
 
     angular.module('skillmatcher', [
-        'skillmatcher-core',
-        'skillmatcher-layout',
-        'skillmatcher-error',
-        'skillmatcher-security',
-        'skillmatcher-home'
+        'skillmatcher.core',
+        'skillmatcher.layout',
+        'skillmatcher.error',
+        'skillmatcher.security',
+        'skillmatcher.competences',
+        'skillmatcher.home'
     ]);
 })();

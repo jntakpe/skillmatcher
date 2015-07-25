@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-security').controller('SignCtrl', SignCtrl);
+    angular.module('skillmatcher.security').controller('SignCtrl', SignCtrl);
 
     function SignCtrl($rootScope, $state, $stateParams, toastr, focus, authService) {
         var vm = this;

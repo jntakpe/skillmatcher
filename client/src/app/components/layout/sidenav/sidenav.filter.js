@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-layout').filter('humanizeMenu', humanizeMenu);
+    angular.module('skillmatcher.layout').filter('humanizeMenu', humanizeMenu);
 
     function humanizeMenu() {
         return function (menu) {

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-core').factory('focus', doFocus);
+    angular.module('skillmatcher.core').factory('focus', doFocus);
 
     function doFocus($rootScope, $timeout) {
         return function timeoutBroadcast(name) {

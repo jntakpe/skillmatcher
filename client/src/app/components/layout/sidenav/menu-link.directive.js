@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher-layout').directive('menuLink', menuLink);
+    angular.module('skillmatcher.layout').directive('menuLink', menuLink);
 
     function menuLink() {
 
