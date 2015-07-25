@@ -4,7 +4,8 @@
     angular.module('skillmatcher.core', [
         'ngMaterial',
         'ui.router',
-        'restangular'
+        'restangular',
+        'md.data.table'
     ]);
 })();
 

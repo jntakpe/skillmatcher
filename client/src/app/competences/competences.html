@@ -1,1 +1,16 @@
 <h1>Liste des compétences</h1>
+
+<md-data-table-container>
+    <table md-data-table>
+        <thead md-order="competences.order">
+        <tr>
+            <th order-by="nom">Nom</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="comp in competences.data | orderBy: competences.order track by comp.id">
+            <td>{{comp.nom}}</td>
+        </tr>
+        </tbody>
+    </table>
+</md-data-table-container>
