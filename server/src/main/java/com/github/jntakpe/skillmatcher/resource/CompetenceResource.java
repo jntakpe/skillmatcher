@@ -32,7 +32,8 @@ public class CompetenceResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Competence create(@RequestBody @Valid Competence competence) {
-        return competenceService.save(competence);
+    public List<Competence> create(@RequestBody @Valid Competence competence) {
+        competenceService.save(competence);
+        return competenceService.findAll();
     }
 }

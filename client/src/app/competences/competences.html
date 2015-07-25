@@ -1,16 +1,19 @@
 <h1>Liste des compétences</h1>
 
 <md-data-table-container>
-    <table md-data-table>
-        <thead md-order="competences.order">
+    <table md-data-table md-progress="competences.progress">
+        <thead md-order="competences.tableService.order">
         <tr>
             <th order-by="nom">Nom</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="comp in competences.data | orderBy: competences.order track by comp.id">
+        <tr ng-repeat="comp in competences.data | orderBy: competences.tableService.order track by comp.id">
             <td>{{comp.nom}}</td>
         </tr>
         </tbody>
     </table>
 </md-data-table-container>
+<md-button class="md-raised md-primary" ng-click="competences.addDialog()">
+    <md-icon class="material-icons md-default-theme">add</md-icon> Ajouter une compétence
+</md-button>

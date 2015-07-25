@@ -1,0 +1,32 @@
+<md-dialog aria-label="Ajouter une compétence" flex="20">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Ajout d'une compétence</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="addComp.cancel()">
+                    <md-icon class="material-icons md-default-theme" aria-label="Fermer la pop-up">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Nom</label>
+                    <input ng-model="addComp.competence.nom">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <div class="md-actions" layout="row">
+            <md-button ng-click="addComp.cancel()" class="md-raised">
+                <md-icon class="material-icons md-default-theme">cancel</md-icon>
+                Annuler
+            </md-button>
+            <md-button ng-click="addComp.hide()" class="md-primary md-raised">
+                <md-icon class="material-icons md-default-theme">add</md-icon>
+                Ajouter
+            </md-button>
+        </div>
+    </form>
+</md-dialog>
+
