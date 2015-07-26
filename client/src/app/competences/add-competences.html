@@ -1,33 +1,21 @@
 <md-dialog aria-label="Ajouter une compétence" flex="20">
     <form ng-submit="appComp.submit()" name="addComp.addForm" novalidate>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2>Ajout d'une compétence</h2>
-                <span flex></span>
-                <md-button class="md-icon-button" ng-click="addComp.cancel()">
-                    <md-icon class="material-icons md-default-theme" aria-label="Fermer la pop-up">close</md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
         <md-dialog-content>
-            <div layout layout-sm="column">
-                <md-input-container flex>
-                    <label>Nom</label>
-                    <input name="competence" ng-model="addComp.competence.nom" required>
+            <h2 class="md-title">Ajout d'une compétence</h2>
+            <md-input-container flex>
+                <label>Nom</label>
+                <input name="nom" ng-model="addComp.competence.nom" required focus-on="add-comp">
 
-                    <div ng-if="addComp.addForm.competence.$touched" ng-messages="addComp.addForm.competence.$error">
-                        <div ng-message="required">Veuillez fournir le nom de la compétence.</div>
-                    </div>
-                </md-input-container>
-            </div>
+                <div ng-if="addComp.addForm.nom.$touched" ng-messages="addComp.addForm.nom.$error">
+                    <div ng-message="required">Veuillez fournir le nom de la compétence.</div>
+                </div>
+            </md-input-container>
         </md-dialog-content>
         <div class="md-actions" layout="row">
-            <md-button ng-click="addComp.cancel()" class="md-raised">
-                <md-icon class="material-icons md-default-theme">cancel</md-icon>
+            <md-button ng-click="addComp.cancel()" class="md-primary">
                 Annuler
             </md-button>
-            <md-button ng-click="addComp.submit()" class="md-primary md-raised">
-                <md-icon class="material-icons md-default-theme">add</md-icon>
+            <md-button ng-click="addComp.submit()" class="md-primary">
                 Ajouter
             </md-button>
         </div>

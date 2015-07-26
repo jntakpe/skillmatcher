@@ -42,6 +42,13 @@ public class CompetenceService {
         return competenceRepository.save(competence);
     }
 
+    @Transactional
+    public void delete(Long id) {
+        Competence competence = competenceRepository.findOne(id);
+        LOGGER.info("Suppression de la compétence {}", competence);
+        competenceRepository.delete(competence);
+    }
+
     @Transactional(readOnly = true)
     public boolean isViolatingConstraint(Competence competence) {
         return findByNomIgnoreCase(competence.getNom())

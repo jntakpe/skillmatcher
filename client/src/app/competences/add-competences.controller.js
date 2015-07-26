@@ -2,7 +2,7 @@
     'use strict';
     angular.module('skillmatcher.competences').controller('AddCompetencesCtrl', AddCompetencesCtrl);
 
-    function AddCompetencesCtrl($mdDialog) {
+    function AddCompetencesCtrl($mdDialog, focus) {
         var vm = this;
 
         vm.competence = {};
@@ -12,6 +12,9 @@
         function submit() {
             if (vm.addForm.$valid) {
                 $mdDialog.hide(vm.competence);
+            } else {
+                vm.addForm.nom.$setTouched();
+                focus('add-comp');
             }
         }
 

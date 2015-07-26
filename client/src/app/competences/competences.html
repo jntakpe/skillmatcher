@@ -5,18 +5,26 @@
         <thead md-order="competences.paginationService.table.order">
         <tr>
             <th order-by="nom">Nom</th>
+            <th class="col-sm">Supprimer</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="comp in competences.data | orderBy: competences.paginationService.table.order |
-        filter: competences.paginationService.paginate | limitTo: competences.paginationService.table.limit track by comp.id">
+        filter: competences.paginationService.paginate |
+        limitTo: competences.paginationService.table.limit track by comp.id">
             <td>{{comp.nom}}</td>
+            <td>
+                <md-button class="md-icon-button" ng-click="competences.deleteDialog(comp)">
+                    <md-icon class="material-icons md-default-theme">delete</md-icon>
+                </md-button>
+            </td>
         </tr>
         </tbody>
     </table>
 </md-data-table-container>
 <table-pagination total="{{competences.data.length}}">
     <md-button class="md-raised md-primary" ng-click="competences.addDialog()">
-        <md-icon class="material-icons md-default-theme">add</md-icon> Ajouter une compétence
+        <md-icon class="material-icons md-default-theme">add</md-icon>
+        Ajouter une compétence
     </md-button>
 </table-pagination>

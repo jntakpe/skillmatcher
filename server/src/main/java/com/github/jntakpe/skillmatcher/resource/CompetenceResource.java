@@ -4,10 +4,7 @@ import com.github.jntakpe.skillmatcher.config.UrlConstants;
 import com.github.jntakpe.skillmatcher.domain.Competence;
 import com.github.jntakpe.skillmatcher.service.CompetenceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -34,6 +31,12 @@ public class CompetenceResource {
     @RequestMapping(method = RequestMethod.POST)
     public List<Competence> create(@RequestBody @Valid Competence competence) throws InterruptedException {
         competenceService.save(competence);
+        return competenceService.findAll();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public List<Competence> remove(@PathVariable Long id) {
+        competenceService.delete(id);
         return competenceService.findAll();
     }
 }

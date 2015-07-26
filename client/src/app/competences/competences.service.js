@@ -9,7 +9,8 @@
         return {
             list: list,
             add: add,
-            showDialog: showDialog
+            showDialog: showDialog,
+            deleteDialog: deleteDialog
         };
 
         function list() {
@@ -25,6 +26,15 @@
                 controller: 'AddCompetencesCtrl as addComp',
                 templateUrl: 'app/competences/add-competences.html'
             });
+        }
+
+        function deleteDialog(nom) {
+            var confirm = $mdDialog.confirm()
+                .title('Confirmation de suppression')
+                .content('Confirmez-vous la suppression de la compétence ' + nom + '?')
+                .ok('Confirmer')
+                .cancel('Annuler');
+            return $mdDialog.show(confirm);
         }
 
     }
