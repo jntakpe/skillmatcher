@@ -1,5 +1,5 @@
 <md-dialog aria-label="Ajouter une compétence" flex="20">
-    <form>
+    <form ng-submit="appComp.submit()" name="addComp.addForm" novalidate>
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>Ajout d'une compétence</h2>
@@ -13,7 +13,11 @@
             <div layout layout-sm="column">
                 <md-input-container flex>
                     <label>Nom</label>
-                    <input ng-model="addComp.competence.nom">
+                    <input name="competence" ng-model="addComp.competence.nom" required>
+
+                    <div ng-if="addComp.addForm.competence.$touched" ng-messages="addComp.addForm.competence.$error">
+                        <div ng-message="required">Veuillez fournir le nom de la compétence.</div>
+                    </div>
                 </md-input-container>
             </div>
         </md-dialog-content>
@@ -22,7 +26,7 @@
                 <md-icon class="material-icons md-default-theme">cancel</md-icon>
                 Annuler
             </md-button>
-            <md-button ng-click="addComp.hide()" class="md-primary md-raised">
+            <md-button ng-click="addComp.submit()" class="md-primary md-raised">
                 <md-icon class="material-icons md-default-theme">add</md-icon>
                 Ajouter
             </md-button>

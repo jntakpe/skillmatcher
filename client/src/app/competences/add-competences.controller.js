@@ -6,11 +6,13 @@
         var vm = this;
 
         vm.competence = {};
-        vm.hide = hide;
+        vm.submit = submit;
         vm.cancel = cancel;
 
-        function hide() {
-            $mdDialog.hide(vm.competence);
+        function submit() {
+            if (vm.addForm.$valid) {
+                $mdDialog.hide(vm.competence);
+            }
         }
 
         function cancel() {
