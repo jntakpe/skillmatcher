@@ -32,14 +32,20 @@
                 state: 'main.candidats',
                 type: 'link'
             },
+            questions = {
+                name: 'Questions',
+                state: 'main.questions',
+                type: 'link'
+            },
             competences = {
-                name: 'Gestion des compétences',
+                name: 'Compétences',
                 state: 'main.competences',
                 type: 'link'
             };
         content.push(navtest);
         content.push(home);
         content.push(candidats);
+        content.push(questions);
         content.push(competences);
         return content;
     }

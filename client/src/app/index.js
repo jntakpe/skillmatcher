@@ -7,6 +7,7 @@
         'skillmatcher.error',
         'skillmatcher.security',
         'skillmatcher.competences',
+        'skillmatcher.questions',
         'skillmatcher.home'
     ]);
 })();

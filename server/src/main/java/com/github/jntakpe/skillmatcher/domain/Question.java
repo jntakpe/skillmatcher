@@ -19,9 +19,6 @@ public class Question extends GenericDomain {
     @Enumerated(EnumType.STRING)
     private Difficulte difficulte;
 
-    @Enumerated(EnumType.STRING)
-    private Resultat resultat;
-
     @ManyToOne
     private Competence competence;
 
@@ -39,14 +36,6 @@ public class Question extends GenericDomain {
 
     public void setDifficulte(Difficulte difficulte) {
         this.difficulte = difficulte;
-    }
-
-    public Resultat getResultat() {
-        return resultat;
-    }
-
-    public void setResultat(Resultat resultat) {
-        this.resultat = resultat;
     }
 
     public Competence getCompetence() {
