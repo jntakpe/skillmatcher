@@ -1,0 +1,11 @@
+<div layout="row">
+    <div flex="50" ng-transclude class="page-btn-action"></div>
+    <div flex>
+        <md-data-table-pagination md-limit="pagin.paginationService.table.limit"
+                                  md-page="pagin.paginationService.table.page"
+                                  md-total="{{pagin.total}}"
+                                  md-label="pagin.label"
+                                  md-row-select="pagin.rowSelect">
+        </md-data-table-pagination>
+    </div>
+</div>

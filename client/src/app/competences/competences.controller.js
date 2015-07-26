@@ -3,12 +3,11 @@
 
     angular.module('skillmatcher.competences').controller('CompetencesCtrl', CompetencesCtrl);
 
-    function CompetencesCtrl(competencesService, tableService) {
+    function CompetencesCtrl(competencesService, paginationService, toastr) {
         var vm = this;
 
-        vm.tableService = tableService;
+        vm.paginationService = paginationService;
         vm.addDialog = addDialog;
-
         vm.progress = list();
 
         function list() {
@@ -27,6 +26,7 @@
                         toastr.error('Erreur lors de l\'ajout de la compétence ' + competence.nom);
                         vm.progress = list();
                     });
+                console.log(vm.progress);
             });
         }
 

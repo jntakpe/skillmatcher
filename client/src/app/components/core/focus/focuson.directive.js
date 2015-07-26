@@ -1,7 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('skillmatcher.core').directive('focusOn', function () {
+    angular.module('skillmatcher.core').directive('focusOn', focusOnDirective);
+
+    function focusOnDirective() {
         return {
             restrict: 'A',
             link: link
@@ -14,6 +16,5 @@
                 }
             });
         }
-    });
-
+    }
 })();

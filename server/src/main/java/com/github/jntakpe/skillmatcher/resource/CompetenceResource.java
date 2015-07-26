@@ -32,7 +32,7 @@ public class CompetenceResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public List<Competence> create(@RequestBody @Valid Competence competence) {
+    public List<Competence> create(@RequestBody @Valid Competence competence) throws InterruptedException {
         competenceService.save(competence);
         return competenceService.findAll();
     }

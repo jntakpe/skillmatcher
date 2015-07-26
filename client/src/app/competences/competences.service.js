@@ -3,7 +3,7 @@
 
     angular.module('skillmatcher.competences').factory('competencesService', competencesService);
 
-    function competencesService(Restangular, $mdDialog, toastr) {
+    function competencesService(Restangular, $mdDialog) {
         var baseCompetences = Restangular.all('competences');
 
         return {
