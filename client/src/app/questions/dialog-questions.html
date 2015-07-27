@@ -1,0 +1,33 @@
+<md-dialog aria-label="{{dialQuestion.question.id ? 'Édition' : 'Ajout'}} d'une question" flex="40">
+    <form ng-submit="dialQuestion.submit()" name="dialQuestion.questionForm" novalidate>
+        <md-dialog-content>
+            <h2 class="md-title">{{dialQuestion.question.id ? 'Édition' : 'Ajout'}} d'une question</h2>
+            <md-input-container flex>
+                <label>Énoncé</label>
+                <input name="enonce" ng-model="dialQuestion.question.enonce" required>
+
+                <div ng-if="dialQuestion.questionForm.enonce.$touched"
+                     ng-messages="dialQuestion.questionForm.enonce.$error">
+                    <div ng-message="required">Veuillez fournir l'énoncé de la question.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <md-select name="difficulte" placeholder="Dificulté" ng-model="dialQuestion.question.difficulte"
+                           required>
+                    <md-option ng-repeat="difficulte in dialQuestion.difficultes" ng-value="difficulte">{{difficulte}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </md-dialog-content>
+        <div class="md-actions" layout="row">
+            <md-button ng-click="dialQuestion.cancel()" class="md-primary">
+                Annuler
+            </md-button>
+            <md-button type="submit" ng-disabled="dialQuestion.questionForm.$invalid"
+                       class="md-primary">
+                {{dialQuestion.question.id ? 'Éditer' : 'Ajouter'}}
+            </md-button>
+        </div>
+    </form>
+</md-dialog>
+

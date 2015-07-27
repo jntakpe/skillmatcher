@@ -3,41 +3,41 @@
 
     angular.module('skillmatcher.competences').controller('CompetencesCtrl', CompetencesCtrl);
 
-    function CompetencesCtrl(competencesService, paginationService, toastr) {
+    function CompetencesCtrl(competencesService, paginationService) {
         var vm = this;
 
+        paginationService.table.order = 'nom';
         vm.paginationService = paginationService;
-        vm.addDialog = addDialog;
+        vm.showDialog = showDialog;
         vm.deleteDialog = deleteDialog;
-        vm.progress = list();
+        vm.progress = competencesService.list().then(function (competences) {
+            vm.data = competences;
+        });
 
-        function list() {
-            return competencesService.list().then(function (competences) {
-                vm.data = competences;
-            });
-        }
-
-        function addDialog() {
-            competencesService.showDialog().then(function (competence) {
-                vm.progress = competencesService.add(competence).then(function (competences) {
-                    toastr.success('La compétence ' + competence.nom + ' a été ajouté avec succès');
-                    vm.data = competences;
+        function showDialog(competence) {
+            competencesService.showDialog(competence).then(function (editedCompetence) {
+                vm.progress = competencesService.save(editedCompetence).then(function (savedCompetence) {
+                    competencesService.displayEditSuccess(savedCompetence);
+                    return competencesService.list();
                 }, function () {
-                    toastr.error('Erreur lors de l\'ajout de la compétence ' + competence.nom);
-                    vm.progress = list();
+                    competencesService.displayEditError(editedCompetence);
+                    return competencesService.list();
+                }).then(function (competences) {
+                    vm.data = competences
                 });
-                console.log(vm.progress);
             });
         }
 
         function deleteDialog(competence) {
             competencesService.deleteDialog(competence.nom).then(function () {
-                vm.progress = competence.remove().then(function (competences) {
-                    toastr.success('La compétence ' + competence.nom + ' a été supprimée avec succès');
-                    vm.data = competences;
+                vm.progress = competence.remove().then(function () {
+                    competencesService.displayDeleteSuccess(competence);
+                    return competencesService.list();
                 }, function () {
-                    toastr.error('Erreur lors de la suppression de la compétence ' + competence.nom);
-                    vm.progress = list();
+                    competencesService.displayDeleteError(competence);
+                    return competencesService.list();
+                }).then(function (competences) {
+                    vm.data = competences;
                 });
             });
         }

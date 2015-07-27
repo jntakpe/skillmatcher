@@ -1,0 +1,24 @@
+<md-dialog aria-label="{{dialComp.competence.id ? 'Édition' : 'Ajout'}} d'une compétence" flex="20">
+    <form ng-submit="dialComp.submit()" name="dialComp.compForm" novalidate>
+        <md-dialog-content>
+            <h2 class="md-title">{{dialComp.competence.id ? 'Édition' : 'Ajout'}} d'une compétence</h2>
+            <md-input-container flex>
+                <label>Nom</label>
+                <input name="nom" ng-model="dialComp.competence.nom" required>
+
+                <div ng-if="dialComp.compForm.nom.$touched" ng-messages="dialComp.compForm.nom.$error">
+                    <div ng-message="required">Veuillez fournir le nom de la compétence.</div>
+                </div>
+            </md-input-container>
+        </md-dialog-content>
+        <div class="md-actions" layout="row">
+            <md-button ng-click="dialComp.cancel()" class="md-primary">
+                Annuler
+            </md-button>
+            <md-button type="submit" class="md-primary">
+                {{dialComp.competence.id ? 'Éditer' : 'Ajouter'}}
+            </md-button>
+        </div>
+    </form>
+</md-dialog>
+

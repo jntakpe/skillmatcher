@@ -4,6 +4,8 @@ import com.github.jntakpe.skillmatcher.config.UrlConstants;
 import com.github.jntakpe.skillmatcher.domain.Competence;
 import com.github.jntakpe.skillmatcher.service.CompetenceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,14 +31,18 @@ public class CompetenceResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public List<Competence> create(@RequestBody @Valid Competence competence) throws InterruptedException {
-        competenceService.save(competence);
-        return competenceService.findAll();
+    public ResponseEntity<Competence> create(@RequestBody @Valid Competence competence) {
+        return new ResponseEntity<>(competenceService.save(competence), HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public Competence update(@PathVariable Long id, @RequestBody @Valid Competence competence) {
+        return competenceService.save(competence);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public List<Competence> remove(@PathVariable Long id) {
+    public void remove(@PathVariable Long id) {
         competenceService.delete(id);
-        return competenceService.findAll();
     }
+
 }

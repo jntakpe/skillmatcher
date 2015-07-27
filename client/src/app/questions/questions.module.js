@@ -16,6 +16,6 @@
                     controller: 'QuestionsCtrl as questions'
                 }
             }
-        })
+        });
     }
 })();

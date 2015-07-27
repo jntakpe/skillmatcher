@@ -1,1 +1,38 @@
-<h1>Questions</h1>
+<h1>Liste des questions</h1>
+
+<md-data-table-container>
+    <table md-data-table md-progress="questions.progress">
+        <thead md-order="questions.paginationService.table.order">
+        <tr>
+            <th order-by="enonce">Énoncé</th>
+            <th order-by="difficulte">Difficulté</th>
+            <th class="col-sm">Éditer</th>
+            <th class="col-sm">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="question in questions.data | orderBy: questions.paginationService.table.order |
+        filter: questions.paginationService.paginate |
+        limitTo: questions.paginationService.table.limit track by question.id">
+            <td>{{question.enonce}}</td>
+            <td>{{question.difficulte}}</td>
+            <td>
+                <md-button class="md-icon-button" ng-click="questions.showDialog(question)">
+                    <md-icon class="material-icons md-default-theme">edit</md-icon>
+                </md-button>
+            </td>
+            <td>
+                <md-button class="md-icon-button" ng-click="questions.deleteDialog(question)">
+                    <md-icon class="material-icons md-default-theme">delete</md-icon>
+                </md-button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</md-data-table-container>
+<table-pagination total="{{questions.data.length}}">
+    <md-button class="md-raised md-primary" ng-click="questions.showDialog()">
+        <md-icon class="material-icons md-default-theme">add</md-icon>
+        Ajouter une question
+    </md-button>
+</table-pagination>

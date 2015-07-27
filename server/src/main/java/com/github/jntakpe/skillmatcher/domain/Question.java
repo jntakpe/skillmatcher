@@ -2,10 +2,8 @@ package com.github.jntakpe.skillmatcher.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**
@@ -14,20 +12,23 @@ import java.util.Objects;
 @Entity
 public class Question extends GenericDomain {
 
-    private String question;
+    @NotNull
+    @Column(unique = true, nullable = false)
+    private String enonce;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Difficulte difficulte;
 
     @ManyToOne
     private Competence competence;
 
-    public String getQuestion() {
-        return question;
+    public String getEnonce() {
+        return enonce;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setEnonce(String enonce) {
+        this.enonce = enonce;
     }
 
     public Difficulte getDifficulte() {
@@ -51,19 +52,19 @@ public class Question extends GenericDomain {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Question question1 = (Question) o;
-        return Objects.equals(question, question1.question) &&
+        return Objects.equals(enonce, question1.enonce) &&
                 Objects.equals(competence, question1.competence);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(question, competence);
+        return Objects.hash(enonce, competence);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("question", question)
+                .append("enonce", enonce)
                 .append("competence", competence)
                 .toString();
     }
