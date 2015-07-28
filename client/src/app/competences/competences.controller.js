@@ -19,8 +19,8 @@
                 vm.progress = competencesService.save(editedCompetence).then(function (savedCompetence) {
                     competencesService.displayEditSuccess(savedCompetence);
                     return competencesService.list();
-                }, function () {
-                    competencesService.displayEditError(editedCompetence);
+                }, function (err) {
+                    competencesService.displayEditError(editedCompetence, err.status);
                     return competencesService.list();
                 }).then(function (competences) {
                     vm.data = competences

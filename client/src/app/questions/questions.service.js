@@ -49,9 +49,16 @@
             toastr.success('La question \'' + question.enonce + '\' a été ' + action + ' avec succès');
         }
 
-        function displayEditError(question) {
+        function displayEditError(question, errStatus) {
             var action = question.id ? 'l\'édition' : 'l\'ajout';
-            toastr.error('Erreur lors de ' + action + ' de la question \'' + question.enonce + '\'');
+            console.log(errStatus);
+            if (errStatus === 409) {
+                toastr.error('Échec lors de ' + action + ' de la question car l\'énoncé \'' + question.enonce +
+                    '\' est déjà utilisé');
+            } else {
+                toastr.error('Erreur lors de ' + action + ' de la question \'' + question.enonce + '\'');
+            }
+
         }
 
         function displayDeleteSuccess(question) {

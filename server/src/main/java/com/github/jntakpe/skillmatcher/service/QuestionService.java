@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityExistsException;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author jntakpe
@@ -34,6 +36,9 @@ public class QuestionService {
     @Transactional
     public Question save(Question question) {
         LOGGER.info("Enregistrement de la question {}", question);
+        if (isViolatingConstraint(question)) {
+            throw new EntityExistsException();
+        }
         return questionRepository.save(question);
     }
 
@@ -42,5 +47,17 @@ public class QuestionService {
         Question question = questionRepository.findOne(id);
         LOGGER.info("Suppression de la question {}", question);
         questionRepository.delete(question);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean isViolatingConstraint(Question question) {
+        return findByEnonceIgnoreCase(question.getEnonce())
+                .map(q -> !q.getId().equals(question.getId()))
+                .orElse(false);
+    }
+
+    private Optional<Question> findByEnonceIgnoreCase(String enonce) {
+        LOGGER.debug("Recherche d'une question en fonction de son énoncé");
+        return questionRepository.findByEnonceIgnoreCase(enonce);
     }
 }

@@ -49,9 +49,14 @@
             toastr.success('La compétence ' + competence.nom + ' a été ' + action + ' avec succès');
         }
 
-        function displayEditError(competence) {
+        function displayEditError(competence, errStatus) {
             var action = competence.id ? 'l\'édition' : 'l\'ajout';
-            toastr.error('Erreur lors de ' + action + ' de la compétence ' + competence.nom);
+            if (errStatus === 409) {
+                toastr.error('Échec lors de ' + action + ' car le nom de la compétence ' + competence.nom
+                    + ' est déjà utilisé');
+            } else {
+                toastr.error('Erreur lors de ' + action + ' de la compétence ' + competence.nom);
+            }
         }
 
         function displayDeleteSuccess(competence) {

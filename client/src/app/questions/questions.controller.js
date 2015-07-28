@@ -19,8 +19,8 @@
                 vm.progress = questionsService.save(editedQuestion).then(function (savedQuestion) {
                     questionsService.displayEditSuccess(savedQuestion);
                     return questionsService.list();
-                }, function () {
-                    questionsService.displayEditError(editedQuestion);
+                }, function (err) {
+                    questionsService.displayEditError(editedQuestion, err.status);
                     return questionsService.list();
                 }).then(function (questions) {
                     vm.data = questions
