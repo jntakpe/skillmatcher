@@ -26,13 +26,16 @@
         }
 
         function showDialog(question, competences) {
-            console.log(competences);
             return $mdDialog.show({
                 controller: 'DialogQuestionsCtrl as dialQuestion',
                 templateUrl: 'app/questions/dialog-questions.html',
                 locals: {
-                    question: question && question.clone(),
-                    competences: competences
+                    question: question && question.clone()
+                },
+                resolve: {
+                    competences: function resolveCompetences() {
+                        return competences;
+                    }
                 }
             });
         }

@@ -19,9 +19,10 @@
                 </md-select>
             </md-input-container>
             <md-input-container>
-                <md-select name="competence" placeholder="Compétence" ng-model="dialQuestion.question.comptence"
+                <md-select name="competence" placeholder="Compétence" ng-model="dialQuestion.question.competence.id"
                            required>
-                    <md-option ng-repeat="competence in dialQuestion.competences" ng-value="competence">{{competence}}
+                    <md-option ng-repeat="competence in dialQuestion.competences" ng-value="competence.id">
+                        {{competence.nom}}
                     </md-option>
                 </md-select>
             </md-input-container>
