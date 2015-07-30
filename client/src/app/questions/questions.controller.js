@@ -3,8 +3,9 @@
 
     angular.module('skillmatcher.questions').controller('QuestionsCtrl', QuestionsCtrl);
 
-    function QuestionsCtrl(questionsService, paginationService) {
+    function QuestionsCtrl(questionsService, paginationService, competencesService) {
         var vm = this;
+        var competences = competencesService.list();
 
         paginationService.table.order = 'enonce';
         vm.paginationService = paginationService;
@@ -15,7 +16,7 @@
         });
 
         function showDialog(question) {
-            questionsService.showDialog(question).then(function (editedQuestion) {
+            questionsService.showDialog(question, competences).then(function (editedQuestion) {
                 vm.progress = questionsService.save(editedQuestion).then(function (savedQuestion) {
                     questionsService.displayEditSuccess(savedQuestion);
                     return questionsService.list();

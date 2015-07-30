@@ -6,6 +6,7 @@
         <tr>
             <th order-by="enonce">Énoncé</th>
             <th order-by="difficulte">Difficulté</th>
+            <th order-by="competence.nom">Compétence</th>
             <th class="col-sm">Éditer</th>
             <th class="col-sm">Supprimer</th>
         </tr>
@@ -16,6 +17,7 @@
         limitTo: questions.paginationService.table.limit track by question.id">
             <td>{{question.enonce}}</td>
             <td>{{question.difficulte}}</td>
+            <td>{{question.competence.nom}}</td>
             <td>
                 <md-button class="md-icon-button" ng-click="questions.showDialog(question)">
                     <md-icon class="material-icons md-default-theme">edit</md-icon>

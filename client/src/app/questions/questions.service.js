@@ -25,12 +25,14 @@
             return question.id ? question.put() : baseQuestions.post(question);
         }
 
-        function showDialog(question) {
+        function showDialog(question, competences) {
+            console.log(competences);
             return $mdDialog.show({
                 controller: 'DialogQuestionsCtrl as dialQuestion',
                 templateUrl: 'app/questions/dialog-questions.html',
                 locals: {
-                    question: question && question.clone()
+                    question: question && question.clone(),
+                    competences: competences
                 }
             });
         }

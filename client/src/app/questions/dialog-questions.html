@@ -18,6 +18,13 @@
                     </md-option>
                 </md-select>
             </md-input-container>
+            <md-input-container>
+                <md-select name="competence" placeholder="Compétence" ng-model="dialQuestion.question.comptence"
+                           required>
+                    <md-option ng-repeat="competence in dialQuestion.competences" ng-value="competence">{{competence}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
         </md-dialog-content>
         <div class="md-actions" layout="row">
             <md-button ng-click="dialQuestion.cancel()" class="md-primary">
