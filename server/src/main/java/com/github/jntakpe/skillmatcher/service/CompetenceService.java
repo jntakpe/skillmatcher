@@ -2,6 +2,7 @@ package com.github.jntakpe.skillmatcher.service;
 
 import com.github.jntakpe.skillmatcher.domain.Competence;
 import com.github.jntakpe.skillmatcher.repository.CompetenceRepository;
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,15 @@ public class CompetenceService {
         return findByNomIgnoreCase(competence.getNom())
                 .map(c -> !c.getId().equals(competence.getId()))
                 .orElse(false);
+    }
+
+    @Transactional(readOnly = true)
+    public Competence findOneWithRelations(Long id) {
+        LOGGER.debug("Recherche de la compétence id {} et initialisation des relations associées", id);
+        Competence competence = competenceRepository.findOne(id);
+        Hibernate.initialize(competence.getProjets());
+        Hibernate.initialize(competence.getQuestions());
+        return competence;
     }
 
     @Transactional(readOnly = true)

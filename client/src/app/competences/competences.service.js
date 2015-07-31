@@ -35,13 +35,28 @@
             });
         }
 
-        function deleteDialog(nom) {
-            var confirm = $mdDialog.confirm()
-                .title('Confirmation de suppression')
-                .content('Confirmez-vous la suppression de la compétence ' + nom + ' ?')
-                .ok('Confirmer')
-                .cancel('Annuler');
-            return $mdDialog.show(confirm);
+        function checkDeletable(withRelations) {
+            var msg = 'Impossible de supprimer la compétence ' + withRelations.nom + ' car elle est liée à des ';
+            if (withRelations.projets.length) {
+                msg += 'projets';
+            } else if (withRelations.questions.length) {
+                msg += 'questions';
+            } else {
+                return true;
+            }
+            toastr.warning(msg);
+            return false;
+        }
+
+        function deleteDialog(competenceWithRelations) {
+            if (checkDeletable(competenceWithRelations)) {
+                var confirm = $mdDialog.confirm()
+                    .title('Confirmation de suppression')
+                    .content('Confirmez-vous la suppression de la compétence ' + competenceWithRelations.nom + ' ?')
+                    .ok('Confirmer')
+                    .cancel('Annuler');
+                return $mdDialog.show(confirm);
+            }
         }
 
         function displayEditSuccess(competence) {

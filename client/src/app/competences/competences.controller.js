@@ -29,15 +29,17 @@
         }
 
         function deleteDialog(competence) {
-            competencesService.deleteDialog(competence.nom).then(function () {
-                vm.progress = competence.remove().then(function () {
-                    competencesService.displayDeleteSuccess(competence);
-                    return competencesService.list();
-                }, function () {
-                    competencesService.displayDeleteError(competence);
-                    return competencesService.list();
-                }).then(function (competences) {
-                    vm.data = competences;
+            competence.get().then(function (competenceWithRelations) {
+                competencesService.deleteDialog(competenceWithRelations).then(function () {
+                    vm.progress = competence.remove().then(function () {
+                        competencesService.displayDeleteSuccess(competence);
+                        return competencesService.list();
+                    }, function () {
+                        competencesService.displayDeleteError(competence);
+                        return competencesService.list();
+                    }).then(function (competences) {
+                        vm.data = competences;
+                    });
                 });
             });
         }

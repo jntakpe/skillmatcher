@@ -45,4 +45,8 @@ public class CompetenceResource {
         competenceService.delete(id);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Competence get(@PathVariable Long id) {
+        return competenceService.findOneWithRelations(id);
+    }
 }

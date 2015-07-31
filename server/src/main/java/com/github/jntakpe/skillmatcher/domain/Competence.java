@@ -1,6 +1,6 @@
 package com.github.jntakpe.skillmatcher.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
@@ -19,11 +19,11 @@ public class Competence extends GenericDomain {
     @Column(unique = true)
     private String nom;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("competence")
     @OneToMany(mappedBy = "competence")
     private Set<Question> questions = new HashSet<>();
 
-    @JsonIgnore
+    @JsonIgnoreProperties("competence")
     @ManyToMany(mappedBy = "competences")
     private Set<Projet> projets = new HashSet<>();
 
