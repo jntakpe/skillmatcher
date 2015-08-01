@@ -32,6 +32,11 @@
                 state: 'main.candidats',
                 type: 'link'
             },
+            projets = {
+                name: 'Projets',
+                state: 'main.projets',
+                type: 'link'
+            },
             questions = {
                 name: 'Questions',
                 state: 'main.questions',
@@ -45,6 +50,7 @@
         content.push(navtest);
         content.push(home);
         content.push(candidats);
+        content.push(projets);
         content.push(questions);
         content.push(competences);
         return content;

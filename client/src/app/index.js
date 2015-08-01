@@ -8,6 +8,7 @@
         'skillmatcher.security',
         'skillmatcher.competences',
         'skillmatcher.questions',
+        'skillmatcher.projets',
         'skillmatcher.home'
     ]);
 })();
