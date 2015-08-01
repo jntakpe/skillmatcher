@@ -23,7 +23,7 @@
                     competencesService.displayEditError(editedCompetence, err.status);
                     return competencesService.list();
                 }).then(function (competences) {
-                    vm.data = competences
+                    vm.data = competences;
                 });
             });
         }

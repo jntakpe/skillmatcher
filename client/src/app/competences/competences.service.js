@@ -67,8 +67,8 @@
         function displayEditError(competence, errStatus) {
             var action = competence.id ? 'l\'édition' : 'l\'ajout';
             if (errStatus === 409) {
-                toastr.error('Échec lors de ' + action + ' car le nom de la compétence ' + competence.nom
-                    + ' est déjà utilisé');
+                toastr.error('Échec lors de ' + action + ' car le nom de la compétence ' + competence.nom +
+                    ' est déjà utilisé');
             } else {
                 toastr.error('Erreur lors de ' + action + ' de la compétence ' + competence.nom);
             }
@@ -79,7 +79,7 @@
         }
 
         function displayDeleteError(competence) {
-            toastr.error('Erreur lors de la suppression de la compétence ' + competence.nom)
+            toastr.error('Erreur lors de la suppression de la compétence ' + competence.nom);
         }
     }
 })();

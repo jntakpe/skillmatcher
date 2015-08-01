@@ -3,7 +3,7 @@
 
     angular.module('skillmatcher.questions').factory('questionsService', questionsService);
 
-    function questionsService(Restangular, $mdDialog) {
+    function questionsService(Restangular, $mdDialog, toastr) {
         var baseQuestions = Restangular.all('questions');
 
         return {
@@ -56,7 +56,6 @@
 
         function displayEditError(question, errStatus) {
             var action = question.id ? 'l\'édition' : 'l\'ajout';
-            console.log(errStatus);
             if (errStatus === 409) {
                 toastr.error('Échec lors de ' + action + ' de la question car l\'énoncé \'' + question.enonce +
                     '\' est déjà utilisé');
@@ -71,7 +70,7 @@
         }
 
         function displayDeleteError(question) {
-            toastr.error('Erreur lors de la suppression de la question \'' + question.enonce + '\'')
+            toastr.error('Erreur lors de la suppression de la question \'' + question.enonce + '\'');
         }
     }
 })();

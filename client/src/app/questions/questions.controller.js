@@ -24,7 +24,7 @@
                     questionsService.displayEditError(editedQuestion, err.status);
                     return questionsService.list();
                 }).then(function (questions) {
-                    vm.data = questions
+                    vm.data = questions;
                 });
             });
         }
