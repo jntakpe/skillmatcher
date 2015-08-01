@@ -3,7 +3,7 @@
 
     angular.module('skillmatcher.competences').factory('competencesService', competencesService);
 
-    function competencesService(Restangular, $mdDialog, toastr) {
+    function competencesService($mdDialog, $q, Restangular, toastr) {
         var baseCompetences = Restangular.all('competences');
 
         return {
@@ -37,7 +37,7 @@
 
         function checkDeletable(withRelations) {
             var msg = 'Impossible de supprimer la compétence ' + withRelations.nom + ' car elle est liée à des ';
-            if (withRelations.projets.length) {
+            if (withRelations.projetsCompetences.length) {
                 msg += 'projets';
             } else if (withRelations.questions.length) {
                 msg += 'questions';
@@ -49,6 +49,7 @@
         }
 
         function deleteDialog(competenceWithRelations) {
+            var deferred = $q.defer();
             if (checkDeletable(competenceWithRelations)) {
                 var confirm = $mdDialog.confirm()
                     .title('Confirmation de suppression')
@@ -57,6 +58,8 @@
                     .cancel('Annuler');
                 return $mdDialog.show(confirm);
             }
+            deferred.reject();
+            return deferred.promise;
         }
 
         function displayEditSuccess(competence) {

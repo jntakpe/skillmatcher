@@ -61,7 +61,7 @@ public class CompetenceService {
     public Competence findOneWithRelations(Long id) {
         LOGGER.debug("Recherche de la compétence id {} et initialisation des relations associées", id);
         Competence competence = competenceRepository.findOne(id);
-        Hibernate.initialize(competence.getProjets());
+        Hibernate.initialize(competence.getProjetsCompetences());
         Hibernate.initialize(competence.getQuestions());
         return competence;
     }

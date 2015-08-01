@@ -3,7 +3,10 @@ package com.github.jntakpe.skillmatcher.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Objects;
@@ -24,8 +27,8 @@ public class Competence extends GenericDomain {
     private Set<Question> questions = new HashSet<>();
 
     @JsonIgnoreProperties("competence")
-    @ManyToMany(mappedBy = "competences")
-    private Set<Projet> projets = new HashSet<>();
+    @OneToMany(mappedBy = "competence")
+    private Set<ProjetCompetence> projetsCompetences = new HashSet<>();
 
     @Transient
     private Integer scoreQuestions;
@@ -49,12 +52,12 @@ public class Competence extends GenericDomain {
         this.questions = questions;
     }
 
-    public Set<Projet> getProjets() {
-        return projets;
+    public Set<ProjetCompetence> getProjetsCompetences() {
+        return projetsCompetences;
     }
 
-    public void setProjets(Set<Projet> projets) {
-        this.projets = projets;
+    public void setProjetsCompetences(Set<ProjetCompetence> projetsCompetences) {
+        this.projetsCompetences = projetsCompetences;
     }
 
     public Integer getScoreQuestions() {

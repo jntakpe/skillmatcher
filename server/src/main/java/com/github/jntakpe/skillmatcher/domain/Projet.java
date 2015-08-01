@@ -2,7 +2,10 @@ package com.github.jntakpe.skillmatcher.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -13,16 +16,15 @@ import java.util.Set;
 @Entity
 public class Projet extends GenericDomain {
 
+    @NotNull
+    @Column(unique = true, nullable = false)
     private String nom;
 
     @OneToMany(mappedBy = "projet")
     private Set<Candidat> candidats = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "projets_competences",
-            joinColumns = {@JoinColumn(name = "projet_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "competence_id", referencedColumnName = "id")})
-    private Set<Competence> competences = new HashSet<>();
+    @OneToMany(mappedBy = "projet")
+    private Set<ProjetCompetence> projetCompetences = new HashSet<>();
 
     public String getNom() {
         return nom;
@@ -40,12 +42,12 @@ public class Projet extends GenericDomain {
         this.candidats = candidats;
     }
 
-    public Set<Competence> getCompetences() {
-        return competences;
+    public Set<ProjetCompetence> getProjetCompetences() {
+        return projetCompetences;
     }
 
-    public void setCompetences(Set<Competence> competences) {
-        this.competences = competences;
+    public void setProjetCompetences(Set<ProjetCompetence> projetCompetences) {
+        this.projetCompetences = projetCompetences;
     }
 
     @Override

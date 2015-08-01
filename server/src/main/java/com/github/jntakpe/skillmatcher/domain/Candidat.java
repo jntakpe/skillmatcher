@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -18,6 +19,12 @@ public class Candidat extends GenericDomain {
     private String prenom;
 
     private boolean interne;
+
+    private Integer tarif;
+
+    private LocalDate dateDispo;
+
+    private Integer anneesXp;
 
     private Integer score;
 
@@ -51,6 +58,30 @@ public class Candidat extends GenericDomain {
         this.interne = interne;
     }
 
+    public Integer getAnneesXp() {
+        return anneesXp;
+    }
+
+    public void setAnneesXp(Integer anneesXp) {
+        this.anneesXp = anneesXp;
+    }
+
+    public LocalDate getDateDispo() {
+        return dateDispo;
+    }
+
+    public void setDateDispo(LocalDate dateDispo) {
+        this.dateDispo = dateDispo;
+    }
+
+    public Integer getTarif() {
+        return tarif;
+    }
+
+    public void setTarif(Integer tarif) {
+        this.tarif = tarif;
+    }
+
     public Integer getScore() {
         return score;
     }
@@ -65,6 +96,14 @@ public class Candidat extends GenericDomain {
 
     public void setCv(Byte[] cv) {
         this.cv = cv;
+    }
+
+    public Projet getProjet() {
+        return projet;
+    }
+
+    public void setProjet(Projet projet) {
+        this.projet = projet;
     }
 
     @Override

@@ -14,4 +14,6 @@ public class UrlConstants {
     public static final String COMPETENCES = BASE + "/competences";
 
     public static final String QUESTIONS = BASE + "/questions";
+
+    public static final String PROJETS = BASE + "/projets";
 }
