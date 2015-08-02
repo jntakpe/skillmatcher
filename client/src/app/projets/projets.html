@@ -1,1 +1,40 @@
-<h1>Projets</h1>
+<h1>Liste des projets</h1>
+
+<md-data-table-container>
+    <table md-data-table md-progress="projets.progress">
+        <thead md-order="projets.paginationService.table.order">
+        <tr>
+            <th order-by="nom">Nom</th>
+            <th>Candidats</th>
+            <th>Compétences</th>
+            <th class="col-sm">Éditer</th>
+            <th class="col-sm">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="projet in projets.data | orderBy: projets.paginationService.table.order |
+        filter: projets.paginationService.paginate |
+        limitTo: projets.paginationService.table.limit track by projet.id">
+            <td>{{projet.nom}}</td>
+            <td>{{projet.candidats}}</td>
+            <td>{{projet.competences}}</td>
+            <td>
+                <md-button class="md-icon-button" ui-sref="main.projets.edit({id: projet.id})">
+                    <md-icon class="material-icons md-default-theme">edit</md-icon>
+                </md-button>
+            </td>
+            <td>
+                <md-button class="md-icon-button" ng-click="projets.deleteDialog(projet)">
+                    <md-icon class="material-icons md-default-theme">delete</md-icon>
+                </md-button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</md-data-table-container>
+<table-pagination total="{{projets.data.length}}">
+    <md-button class="md-raised md-primary" ui-sref="main.projets.edit">
+        <md-icon class="material-icons md-default-theme">add</md-icon>
+        Ajouter une projet
+    </md-button>
+</table-pagination>

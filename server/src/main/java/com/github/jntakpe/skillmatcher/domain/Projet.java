@@ -1,9 +1,11 @@
 package com.github.jntakpe.skillmatcher.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
@@ -20,11 +22,13 @@ public class Projet extends GenericDomain {
     @Column(unique = true, nullable = false)
     private String nom;
 
-    @OneToMany(mappedBy = "projet")
+    @JsonIgnoreProperties("projet")
+    @OneToMany(mappedBy = "projet", fetch = FetchType.EAGER)
     private Set<Candidat> candidats = new HashSet<>();
 
-    @OneToMany(mappedBy = "projet")
-    private Set<ProjetCompetence> projetCompetences = new HashSet<>();
+    @JsonIgnoreProperties("projet")
+    @OneToMany(mappedBy = "projet", fetch = FetchType.EAGER)
+    private Set<ProjetCompetence> projetsCompetences = new HashSet<>();
 
     public String getNom() {
         return nom;
@@ -42,12 +46,12 @@ public class Projet extends GenericDomain {
         this.candidats = candidats;
     }
 
-    public Set<ProjetCompetence> getProjetCompetences() {
-        return projetCompetences;
+    public Set<ProjetCompetence> getProjetsCompetences() {
+        return projetsCompetences;
     }
 
-    public void setProjetCompetences(Set<ProjetCompetence> projetCompetences) {
-        this.projetCompetences = projetCompetences;
+    public void setProjetsCompetences(Set<ProjetCompetence> projetsCompetences) {
+        this.projetsCompetences = projetsCompetences;
     }
 
     @Override

@@ -6,8 +6,9 @@
     function ProjetsCtrl(projetsService) {
         var vm = this;
 
-        projetsService.list().then(function (data) {
-            console.log(data);
+        projetsService.list().then(function (projets) {
+            vm.data = projetsService.mapList(projets);
+            console.log(vm.data);
         });
     }
 })();

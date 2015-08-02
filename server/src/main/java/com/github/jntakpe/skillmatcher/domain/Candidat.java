@@ -16,8 +16,6 @@ public class Candidat extends GenericDomain {
 
     private String nom;
 
-    private String prenom;
-
     private boolean interne;
 
     private Integer tarif;
@@ -40,14 +38,6 @@ public class Candidat extends GenericDomain {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
     }
 
     public boolean isInterne() {
@@ -109,24 +99,20 @@ public class Candidat extends GenericDomain {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Candidat)) return false;
         Candidat candidat = (Candidat) o;
-        return Objects.equals(nom, candidat.nom) &&
-                Objects.equals(prenom, candidat.prenom);
+        return Objects.equals(nom, candidat.nom);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nom, prenom);
+        return Objects.hash(nom);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .append("nom", nom)
-                .append("prenom", prenom)
-                .append("interne", interne)
-                .append("score", score)
                 .toString();
     }
 }
