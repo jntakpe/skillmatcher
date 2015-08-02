@@ -1,5 +1,6 @@
 package com.github.jntakpe.skillmatcher.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Entity;
@@ -17,9 +18,12 @@ public class ProjetCompetence extends GenericDomain {
     private Integer coefficient;
 
     @ManyToOne(optional = false)
+    @JsonIgnoreProperties("projetsCompetences")
     private Projet projet;
 
+
     @ManyToOne(optional = false)
+    @JsonIgnoreProperties("projetsCompetences")
     private Competence competence;
 
     public Integer getCoefficient() {
