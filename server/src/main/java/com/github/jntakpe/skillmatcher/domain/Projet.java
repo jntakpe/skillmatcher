@@ -3,10 +3,7 @@ package com.github.jntakpe.skillmatcher.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Objects;
@@ -27,7 +24,7 @@ public class Projet extends GenericDomain {
     private Set<Candidat> candidats = new HashSet<>();
 
     @JsonIgnoreProperties("projet")
-    @OneToMany(mappedBy = "projet", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "projet", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<ProjetCompetence> projetsCompetences = new HashSet<>();
 
     public String getNom() {

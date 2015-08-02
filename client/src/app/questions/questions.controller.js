@@ -16,28 +16,28 @@
         });
 
         function showDialog(question) {
-            questionsService.showDialog(question, competences).then(function (editedQuestion) {
-                vm.progress = questionsService.save(editedQuestion).then(function (savedQuestion) {
+            questionsService.showDialog(question, competences).then(function whenEdited(editedQuestion) {
+                vm.progress = questionsService.save(editedQuestion).then(function whenSaved(savedQuestion) {
                     questionsService.displayEditSuccess(savedQuestion);
                     return questionsService.list();
-                }, function (err) {
+                }, function whenSaveError(err) {
                     questionsService.displayEditError(editedQuestion, err.status);
                     return questionsService.list();
-                }).then(function (questions) {
+                }).then(function refresh(questions) {
                     vm.data = questions;
                 });
             });
         }
 
         function deleteDialog(question) {
-            questionsService.deleteDialog(question.enonce).then(function () {
+            questionsService.deleteDialog(question.enonce).then(function whenConfirmed() {
                 vm.progress = question.remove().then(function () {
                     questionsService.displayDeleteSuccess(question);
                     return questionsService.list();
-                }, function () {
+                }, function whenDeleteError() {
                     questionsService.displayDeleteError(question);
                     return questionsService.list();
-                }).then(function (questions) {
+                }).then(function refresh(questions) {
                     vm.data = questions;
                 });
             });

@@ -30,4 +30,11 @@ public class ProjetService {
         LOGGER.debug("Recherche des projets");
         return projetRepository.findAll();
     }
+
+    @Transactional
+    public void delete(Long id) {
+        Projet projet = projetRepository.findOne(id);
+        LOGGER.info("Suppression du projet {}", projet);
+        projetRepository.delete(projet);
+    }
 }

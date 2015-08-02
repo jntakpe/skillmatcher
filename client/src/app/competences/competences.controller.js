@@ -15,14 +15,14 @@
         });
 
         function showDialog(competence) {
-            competencesService.showDialog(competence).then(function (editedCompetence) {
-                vm.progress = competencesService.save(editedCompetence).then(function (savedCompetence) {
+            competencesService.showDialog(competence).then(function whenEdited(editedCompetence) {
+                vm.progress = competencesService.save(editedCompetence).then(function whenSaved(savedCompetence) {
                     competencesService.displayEditSuccess(savedCompetence);
                     return competencesService.list();
-                }, function (err) {
+                }, function whenSaveError(err) {
                     competencesService.displayEditError(editedCompetence, err.status);
                     return competencesService.list();
-                }).then(function (competences) {
+                }).then(function refresh(competences) {
                     vm.data = competences;
                 });
             });
@@ -30,14 +30,14 @@
 
         function deleteDialog(competence) {
             competence.get().then(function (competenceWithRelations) {
-                competencesService.deleteDialog(competenceWithRelations).then(function () {
-                    vm.progress = competence.remove().then(function () {
+                competencesService.deleteDialog(competenceWithRelations).then(function whenConfirmed() {
+                    vm.progress = competence.remove().then(function whenDeleted() {
                         competencesService.displayDeleteSuccess(competence);
                         return competencesService.list();
-                    }, function () {
+                    }, function whenDeleteError() {
                         competencesService.displayDeleteError(competence);
                         return competencesService.list();
-                    }).then(function (competences) {
+                    }).then(function refresh(competences) {
                         vm.data = competences;
                     });
                 });
