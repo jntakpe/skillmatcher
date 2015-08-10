@@ -28,4 +28,6 @@ public class CandidatResource {
     public List<Candidat> list() {
         return candidatService.findAll();
     }
+
+
 }

@@ -25,3 +25,7 @@ INSERT INTO projet_competence(coefficient, projet_id, competence_id) VALUES (5, 
 INSERT INTO projet_competence(coefficient, projet_id, competence_id) VALUES (5, (SELECT id FROM projet WHERE projet.nom='Parc'), (SELECT id FROM competence WHERE competence.nom = 'Javascript/AngularJS'));
 INSERT INTO projet_competence(coefficient, projet_id, competence_id) VALUES (5, (SELECT id FROM projet WHERE projet.nom='Poste de travail'), (SELECT id FROM competence WHERE competence.nom = 'Javascript/AngularJS'));
 INSERT INTO projet_competence(coefficient, projet_id, competence_id) VALUES (5, (SELECT id FROM projet WHERE projet.nom='Qualité'), (SELECT id FROM competence WHERE competence.nom = 'Javascript/AngularJS'));
+
+-- Candidats
+INSERT INTO candidat (id, annees_xp, date_dispo, interne, nom, score, tarif, projet_id) VALUES (nextval('candidat_id_seq'), 1, null, false, 'Njeneza Francois', null, null, null);
+INSERT INTO candidat (id, annees_xp, date_dispo, interne, nom, score, tarif, projet_id) VALUES (nextval('candidat_id_seq'), 3, null, false, 'Patience', null, null, null);
